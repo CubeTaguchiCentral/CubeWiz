@@ -70,6 +70,8 @@ $$noResuming:
     push  af
     ld  a, (MUSIC_BANK)
     ld  (SAVED_MUSIC_BANK), a  
+    ld  a, 0Fh
+    ld  (FADE_IN_PARAMS), a
     pop  af
     push  af
     ld  a, (ix+BANK_INDEX)
