@@ -41,27 +41,23 @@
     include "code\dac\send_dac_byte.asm"
   align 10h, 0
     include "data\algo_slots.asm"
-  align 10h, 0
     include "data\ym_frequencies.asm"
-  align 10h, 0
     include "data\psg_frequencies.asm"
-  align 1600h
+  align 10h, 0
     include "data\ym_levels.asm"
-  align 10h, 0
-    include "data\pcm_samples.asm"
-  align 10h, 0
     include "data\psg_instruments.asm"
-  align 10h, 0
     include "data\pitch_effects.asm"
   align 10h, 0
-    include "bankdefs.asm"
+    include "data\pcm_samples.asm"
     align 1800h
     include "data\channel_data.asm"
+  align 10h, 0
+    include "bankdefs.asm"
 
 END_OF_DRIVER:
   if MOMPASS==2
-    if $ > 1FC0h
-      fatal "Driver too big to fit in Z80 Ram ; the last offset must be < 1FC0h. It is currently \{END_OF_DRIVER}h"
+    if $ > 1FC8h
+      fatal "Driver too big to fit in Z80 Ram ; the last offset must be < 1FC8h. It is currently \{END_OF_DRIVER}h"
     else
       message "Last offset: \{END_OF_DRIVER}h"
     endif
